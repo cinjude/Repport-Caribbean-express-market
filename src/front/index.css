@@ -1,0 +1,83 @@
+.navbar-container {
+  background-color: rgb(79, 79, 184) !important;
+}
+.dropdown-user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3rem 0 2rem;
+  background-color: rgb(51, 51, 126);
+  border-radius: 2rem;
+}
+.dropdown-user-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn {
+  --bs-btn-padding-x: 0;
+  --bs-btn-padding-y: 0;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+.user {
+  font-size: 0.8rem;
+  font-weight: bolder;
+  margin-top: 0.2rem;
+}
+.user span {
+  font-size: 0.8rem;
+}
+.user p {
+  font-size: 1rem;
+}
+.icon {
+  margin-bottom: 1rem;
+  margin-right: 0.4rem;
+}
+.btn-secondary {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: ;
+  --bs-btn-border-color: #6c757d;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-focus-shadow-rgb: 130, 138, 145;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #565e64;
+  --bs-btn-active-border-color: #51585e;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #6c757d;
+  --bs-btn-disabled-border-color: #6c757d;
+  border: none;
+}
+
+.link-dropdown{
+ background-color: rgb(79, 79, 184) ;
+ border-radius: 1rem;
+ color: white;
+}
+
+.container-form{
+  width: 40%;
+  margin: auto;
+  box-shadow: 0 0 15px rgba(176, 175, 175, 0.7);
+  padding: 2rem;
+}
+.login-form{
+  margin-top: 1.5rem;
+}
+
+.container-form-sign-up{
+  width: 55%;
+  margin: auto;
+  box-shadow: 0 0 15px rgba(176, 175, 175, 0.7);
+  padding: 2rem;
+}
+.link-logout{
+background-color: bisque;
+padding: 0.3rem;
+border-radius: 0.5rem;
+margin-left: 2.7rem;
+}
