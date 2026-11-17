@@ -12,9 +12,9 @@ def create_app():
     db.init_app(app)
     migrate.init_app(app, db)
     jwt.init_app(app)
-    CORS(app)
+    CORS(app, origins=app.config["CORS_ORIGINS"].split(","))
 
-    import models  
+    import models
 
     from routes.auth import auth_bp
     from routes.register import register_bp
@@ -25,6 +25,5 @@ def create_app():
         app.register_blueprint(bp)
 
     return app
-
 
 app = create_app()

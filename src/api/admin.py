@@ -1,18 +1,27 @@
-import os
+
 import inspect
+
 from flask_admin import Admin
-from . import models
-from .models import db
 from flask_admin.contrib.sqla import ModelView
 from flask_admin.theme import Bootstrap4Theme
 
+import models
+from extensions import db
+
+
+class SafeModelView(ModelView):
+    column_exclude_list = ("password_hash",)
+    form_excluded_columns = ("password_hash",)
+
 
 def setup_admin(app):
-    app.secret_key = os.environ.get('FLASK_APP_KEY', 'sample key')
-    admin = Admin(app, name='4Geeks Admin', theme=Bootstrap4Theme(swatch='cerulean'))
+    if app.config.get("IS_PRODUCTION"):
+        return
 
-    # Dynamically add all models to the admin interface
-    for name, obj in inspect.getmembers(models):
-        # Verify that the object is a SQLAlchemy model before adding it to the admin. 
+    admin = Admin(app, name="Caribbean Express · Dev Admin",
+                  theme=Bootstrap4Theme(swatch="cerulean"))
+
+    # Add every model exported by models/__init__.py
+    for _name, obj in inspect.getmembers(models):
         if inspect.isclass(obj) and issubclass(obj, db.Model):
-            admin.add_view(ModelView(obj, db.session))
+            admin.add_view(SafeModelView(obj, db.session))
