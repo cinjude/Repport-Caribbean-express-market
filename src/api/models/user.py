@@ -1,4 +1,4 @@
-from api.extensions import db
+from extensions import db
 import enum
 from datetime import datetime, timezone
 from .base import utcnow, enum_column

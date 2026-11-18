@@ -7,15 +7,17 @@ load_dotenv()
 
 
 def _database_url():
-    """Use DATABASE_URL if set, otherwise a local SQLite file.
-    Render/Heroku give 'postgres://', but SQLAlchemy needs 'postgresql://'."""
+
     url = os.environ.get("DATABASE_URL", "sqlite:///caribbean_market.db")
-    if url.startswith("postgres://"):
-        url = url.replace("postgres://", "postgresql://", 1)
+    for prefix in ("postgres://", "postgresql://"):
+        if url.startswith(prefix):
+            url = "postgresql+psycopg://" + url[len(prefix):]
+            break
     return url
 
 
 class Config:
+
     ENV_NAME = os.environ.get("APP_ENV", "development")
     IS_PRODUCTION = ENV_NAME == "production"
 

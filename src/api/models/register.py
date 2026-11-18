@@ -1,4 +1,4 @@
-from api.extensions import db
+from extensions import db
 import enum
 from .base import utcnow, money, enum_column, BILL_DENOMINATIONS
 from decimal import Decimal
