@@ -1,4 +1,4 @@
-# app.py
+
 from flask import Flask
 from flask_cors import CORS
 from config import Config
@@ -23,6 +23,9 @@ def create_app():
     from routes.users import users_bp
     for bp in (auth_bp, register_bp, transfer_bp, notes_bp, users_bp):
         app.register_blueprint(bp)
+
+    from admin import setup_admin
+    setup_admin(app)
 
     return app
 
