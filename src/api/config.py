@@ -38,3 +38,9 @@ class Config:
         hours=int(os.environ.get("JWT_HOURS", 12)))
 
     CORS_ORIGINS = os.environ.get("CORS_ORIGINS", "http://localhost:5173")
+
+
+class TestConfig(Config):
+    TESTING = True
+    SQLALCHEMY_DATABASE_URI = "sqlite://"
+    JWT_SECRET_KEY = "test-secret"
